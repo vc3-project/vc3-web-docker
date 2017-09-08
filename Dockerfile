@@ -1,6 +1,6 @@
 FROM centos:centos7
 LABEL maintainer lincolnb@uchicago.edu
-LABEL version 0.2
+LABEL version 2017.9.7-1
 
 RUN yum install epel-release -y 
 RUN yum install git python-pip nginx python-devel supervisor pip uwsgi uwsgi-plugin-python -y 
@@ -15,16 +15,19 @@ RUN cd /usr/local
 
 RUN git clone https://github.com/vc3-project/vc3-info-service.git && \
     pushd vc3-info-service && \
+    git checkout 201709061834 && \
     python setup.py install && \
     popd
 
 RUN git clone https://github.com/vc3-project/vc3-client.git && \
     pushd vc3-client && \
+    git checkout 201709061834 && \
     python setup.py install && \
     popd
 
 RUN git clone https://github.com/vc3-project/credible.git && \
     pushd vc3-client && \
+    git checkout 201709061834 && \
     python setup.py install && \
     popd
 
