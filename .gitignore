@@ -1,3 +1,4 @@
 *.pem
 vc3-website-python/*
 certs/*
+secrets/*
