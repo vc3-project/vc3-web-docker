@@ -2,34 +2,17 @@ FROM centos:centos7
 LABEL maintainer lincolnb@uchicago.edu
 LABEL version test-12212017
 
+RUN echo -e "[vc3-noarch] \nname=VC3 \nbaseurl=http://build.virtualclusters.org/testing/noarch \ngpgcheck=0" >> /etc/yum.repos.d/vc3.repo
+
+RUN yum clean all && yum update -y
 RUN yum install epel-release -y 
 RUN yum install git python-pip nginx python-devel supervisor pip uwsgi uwsgi-plugin-python -y 
 RUN yum groupinstall "Development Tools" -y
+RUN yum install vc3-client vc3-infoservice -y
 
 RUN mkdir -p /srv/www
 RUN git clone https://github.com/vc3-project/vc3-website-python /srv/www/vc3-web-env
 RUN cd /srv/www/vc3-web-env; pip install -r requirements.txt
-
-# VC3 components
-RUN cd /usr/local
-
-RUN git clone https://github.com/vc3-project/vc3-info-service.git && \
-    pushd vc3-info-service && \
-    git checkout test && \
-    python setup.py install && \
-    popd
-
-RUN git clone https://github.com/vc3-project/vc3-client.git && \
-    pushd vc3-client && \
-    git checkout test && \
-    python setup.py install && \
-    popd
-
-#RUN git clone https://github.com/vc3-project/credible.git && \
-    #pushd vc3-client && \
-    #git checkout test && \
-    #python setup.py install && \
-    #popd
 
 # Config files
 COPY vc3.ini /etc/uwsgi.d/vc3.ini
