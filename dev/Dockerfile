@@ -1,6 +1,6 @@
 FROM centos:centos7
 LABEL maintainer lincolnb@uchicago.edu
-LABEL version 2017.9.8-1
+LABEL version 2018.1.17-1
 
 RUN yum install epel-release -y 
 RUN yum install git python-pip nginx python-devel supervisor pip uwsgi uwsgi-plugin-python -y 
@@ -27,6 +27,11 @@ RUN git clone https://github.com/vc3-project/credible.git && \
     pushd vc3-client && \
     python setup.py install && \
     popd
+    
+RUN git clone https://github.com/vc3-project/vc3-builder.git && \
+    pushd vc3-builder
+    cp vc3-builder/vc3-builder /usr/bin
+    popd 
 
 # Config files
 COPY vc3.ini /etc/uwsgi.d/vc3.ini
