@@ -30,7 +30,7 @@ RUN git clone https://github.com/vc3-project/credible.git && \
     
 RUN git clone https://github.com/vc3-project/vc3-builder.git && \
     pushd vc3-builder && \
-    cp vc3-builder/vc3-builder /usr/bin && \
+    cp vc3-builder /usr/bin && \
     popd 
 
 # Config files
