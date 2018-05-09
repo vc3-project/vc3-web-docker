@@ -10,7 +10,7 @@ RUN yum install git python-pip nginx python-devel supervisor pip uwsgi uwsgi-plu
 RUN yum groupinstall "Development Tools" -y
 RUN yum install vc3-client vc3-infoservice vc3-builder -y
 
-RUN Mkdir -p /etc/nginx/certificate
+RUN mkdir -p /etc/nginx/certificate
 RUN mkdir -p /srv/www
 RUN git clone https://github.com/vc3-project/vc3-website-python /srv/www/vc3-web-env
 RUN cd /srv/www/vc3-web-env; pip install -r requirements.txt
