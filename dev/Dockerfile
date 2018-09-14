@@ -1,9 +1,9 @@
 FROM centos:centos7
 LABEL maintainer lincolnb@uchicago.edu
-LABEL version 2018.5.22-1
+LABEL version 2018.9.14-1
 
 RUN yum install epel-release -y 
-RUN yum install git python-pip nginx python-devel supervisor pip uwsgi uwsgi-plugin-python -y 
+RUN yum install git python-pip nginx python-devel supervisor pip uwsgi uwsgi-plugin-python2 -y 
 RUN yum groupinstall "Development Tools" -y
 
 RUN mkdir -p /srv/www
