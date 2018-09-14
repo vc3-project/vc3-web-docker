@@ -6,7 +6,7 @@ RUN echo -e "[vc3-noarch] \nname=VC3 \nbaseurl=http://build.virtualclusters.org/
 
 RUN yum clean all && yum update -y
 RUN yum install epel-release -y 
-RUN yum install git python-pip nginx python-devel supervisor pip uwsgi uwsgi-plugin-python -y 
+RUN yum install git python-pip nginx python-devel supervisor uwsgi uwsgi-plugin-python2 -y 
 RUN yum groupinstall "Development Tools" -y
 RUN yum install vc3-client vc3-infoservice vc3-builder -y
 
