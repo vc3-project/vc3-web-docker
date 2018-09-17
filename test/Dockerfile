@@ -1,6 +1,6 @@
 FROM centos:centos7
 LABEL maintainer lincolnb@uchicago.edu
-LABEL version 2018.2.16-2
+LABEL version 2018.9.17-1
 
 RUN echo -e "[vc3-noarch] \nname=VC3 \nbaseurl=http://build.virtualclusters.org/testing/noarch \ngpgcheck=0" >> /etc/yum.repos.d/vc3.repo
 
