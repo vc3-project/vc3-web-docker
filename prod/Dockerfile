@@ -13,7 +13,7 @@ RUN yum install vc3-client vc3-infoservice vc3-builder -y
 RUN mkdir -p /etc/nginx/certificate
 RUN mkdir -p /srv/www
 RUN git clone https://github.com/vc3-project/vc3-website-python /srv/www/vc3-web-env
-RUN cd /srv/www/vc3-web-env; pip install -r requirements.txt
+RUN cd /srv/www/vc3-web-env; git checkout vc3-prod; pip install -r requirements.txt
 
 # Config files
 COPY vc3.ini /etc/uwsgi.d/vc3.ini
